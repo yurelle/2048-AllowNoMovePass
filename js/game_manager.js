@@ -68,7 +68,9 @@ GameManager.prototype.addStartTiles = function () {
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 2 : 4;
+    //var value = Math.random() < 0.9 ? 2 : 4;
+    //Force all new blocks to be 2
+    var value = 2;
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
     this.grid.insertTile(tile);
@@ -179,7 +181,8 @@ GameManager.prototype.move = function (direction) {
     });
   });
 
-  if (moved) {
+  //Enable NoMovePass
+  //if (moved) {
     this.addRandomTile();
 
     if (!this.movesAvailable()) {
@@ -187,7 +190,7 @@ GameManager.prototype.move = function (direction) {
     }
 
     this.actuate();
-  }
+  //}
 };
 
 // Get the vector representing the chosen direction
